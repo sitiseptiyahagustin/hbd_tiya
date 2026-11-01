@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#21153b" />
+  <title>Selamat Ulang Tahun, Siti!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { background: radial-gradient(circle at 14% 14%, #ff9fc5 0, transparent 30%), radial-gradient(circle at 85% 82%, #d65c94 0, transparent 34%), #4a1837; color: #fff7fa; font-family: 'DM Sans', sans-serif; margin: 0; overflow-x: hidden; }
+    body::before { background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 36px 36px; content: ''; inset: 0; pointer-events: none; position: fixed; }
+    .stars { inset: 0; overflow: hidden; pointer-events: none; position: fixed; }
+    .star { animation: twinkle 2.4s ease-in-out infinite; background: #ffe5f0; border-radius: 50%; height: 3px; opacity: .75; position: absolute; width: 3px; }
+    .love-sky { inset: 0; overflow: hidden; pointer-events: none; position: fixed; }
+    .floating-heart { animation: drift-heart var(--heart-time) ease-in-out infinite alternate; color: #ffb3d2; filter: drop-shadow(0 4px 10px rgba(255,91,161,.25)); font-size: var(--heart-size); left: var(--heart-left); opacity: .5; position: absolute; top: var(--heart-top); }
+    .hero { align-items: center; display: grid; min-height: 100svh; padding: 28px 24px; place-items: center; position: relative; }
+    .card { background: linear-gradient(145deg, rgba(133,38,88,.94), rgba(75,19,57,.96)); border: 1px solid rgba(255,224,239,.48); border-radius: 28px; box-shadow: 0 28px 80px rgba(67,7,41,.52), inset 0 1px rgba(255,255,255,.18); max-width: 670px; overflow: hidden; padding: 40px 52px 35px; position: relative; text-align: center; width: min(100%, 670px); z-index: 1; }
+    .card::after { border: 1px solid rgba(255,204,225,.28); border-radius: 20px; content: ''; inset: 11px; pointer-events: none; position: absolute; }
+    .card::before { color: rgba(255,199,224,.24); content: '♥'; font-family: Georgia, serif; font-size: 6rem; left: 20px; line-height: 1; position: absolute; top: 14px; transform: rotate(-16deg); }
+    .eyebrow { color: #ffd3e4; font-size: .67rem; font-weight: 700; letter-spacing: .25em; margin: 0; text-transform: uppercase; }
+    .photo-wrap { height: 105px; margin: 15px auto 9px; position: relative; width: 105px; }
+    .photo-wrap::before { animation: spin 9s linear infinite; border: 1px dashed #ffd2e3; border-radius: 50%; content: ''; inset: -8px; position: absolute; }
+    .photo { border: 4px solid #ffb6d3; border-radius: 50%; height: 100%; object-fit: cover; width: 100%; }
+    .photo-wrap span { background: #f46ea8; border: 2px solid #ffe4ef; border-radius: 50%; bottom: -4px; color: #fff; font-size: .8rem; height: 28px; line-height: 24px; position: absolute; right: -4px; width: 28px; }
+    .candle-toggle { background: transparent; box-shadow: none; cursor: pointer; display: block; height: 73px; margin: 8px auto 5px; padding: 0; position: relative; width: 52px; }
+    .candle-toggle:hover { box-shadow: none; transform: translateY(-2px); }
+    .candle { background: repeating-linear-gradient(135deg, #ffb0cf 0 6px, #fff1f7 6px 12px); border-radius: 5px 5px 2px 2px; bottom: 2px; box-shadow: inset -4px 0 rgba(194,53,112,.18); height: 42px; left: 19px; position: absolute; width: 14px; }
+    .wick { background: #5b2742; border-radius: 6px; height: 9px; left: 25px; position: absolute; top: 20px; width: 3px; }
+    .flame { animation: flicker .8s ease-in-out infinite alternate; background: radial-gradient(ellipse at bottom, #fff8b5 0 22%, #ffcd61 25% 48%, #ff709c 72%); border-radius: 50% 50% 48% 48%; box-shadow: 0 0 14px 5px rgba(255,181,92,.58); height: 24px; left: 17px; position: absolute; top: 0; transform: rotate(45deg); transition: all .3s ease; width: 20px; }
+    .candle-toggle.is-out .flame { animation: none; background: #736075; border-radius: 50%; box-shadow: none; height: 6px; left: 21px; opacity: .8; top: 15px; transform: none; width: 10px; }
+    h1 { color: #fff7fa; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.15rem, 5vw, 3.45rem); font-weight: 600; letter-spacing: -.04em; line-height: 1.05; margin: 4px auto 14px; }
+    h1 span { color: #ffbad7; display: block; font-style: italic; margin-top: 5px; }
+    .divider { align-items: center; color: #ffb6d3; display: flex; gap: 12px; justify-content: center; margin: 0 auto 17px; }
+    .divider i { background: linear-gradient(90deg, transparent, #ffb6d3); height: 1px; width: 70px; }
+    .divider i:last-child { transform: scaleX(-1); }
+    #text { color: #f1e8de; font-size: .97rem; line-height: 1.72; margin: 0 auto; max-width: 520px; min-height: 78px; }
+    .wish { color: #ffb9d6; font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-style: italic; margin: 14px auto 0; }
+    button { background: linear-gradient(135deg, #ffb7d4, #f46fa9); border: 0; border-radius: 999px; box-shadow: 0 7px 0 #c24f82, 0 11px 26px rgba(0,0,0,.24); color: #561637; cursor: pointer; font: 700 .9rem 'DM Sans', sans-serif; margin-top: 23px; padding: 14px 24px; transition: transform .2s, box-shadow .2s; }
+    button:hover { box-shadow: 0 4px 0 #c24f82, 0 8px 22px rgba(0,0,0,.25); transform: translateY(3px); }
+    button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .hidden-msg { animation: reveal .5s ease both; border-top: 1px solid rgba(255,207,112,.23); color: #eee3ed; display: none; font-size: .91rem; line-height: 1.7; margin: 24px auto 0; max-width: 520px; padding-top: 18px; }
+    .hidden-msg p { margin: 0 0 10px; }
+    .signature { color: #c7afc1; font-size: .68rem; letter-spacing: .08em; margin: 23px 0 0; }
+    .scroll-note { bottom: 22px; color: rgba(255,248,233,.65); font-size: .68rem; left: 50%; letter-spacing: .18em; position: absolute; text-transform: uppercase; transform: translateX(-50%); }
+    .scroll-note::after { animation: bob 1.8s ease-in-out infinite; color: #ffcf70; content: '↓'; display: block; font-size: 1.1rem; letter-spacing: 0; margin-top: 4px; }
+    .story { margin: 0 auto; max-width: 1010px; padding: 88px 24px 105px; position: relative; }
+    .section-intro { margin: 0 auto 34px; max-width: 550px; text-align: center; }
+    .section-intro p { color: #ffd3e4; font-size: .67rem; font-weight: 700; letter-spacing: .23em; margin: 0 0 10px; text-transform: uppercase; }
+    .section-intro h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.12; margin: 0; }
+    .section-intro h2 em { color: #ffb9d6; font-style: italic; }
+    .reasons { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+    .reason { background: rgba(255,224,239,.09); border: 1px solid rgba(255,215,233,.25); border-radius: 20px; padding: 27px 22px; text-align: center; }
+    .reason-icon { align-items: center; background: rgba(255,180,215,.16); border: 1px solid rgba(255,199,225,.4); border-radius: 50%; color: #ffb9d6; display: flex; font-size: 1.45rem; height: 48px; justify-content: center; margin: 0 auto 14px; width: 48px; }
+    .reason h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.18rem; margin: 0 0 9px; }
+    .reason p { color: #dbcfdc; font-size: .87rem; line-height: 1.65; margin: 0; }
+    .letter { background: linear-gradient(135deg, rgba(255,177,212,.22), rgba(208,76,132,.18)); border: 1px solid rgba(255,205,228,.37); border-radius: 26px; margin: 74px auto 0; max-width: 760px; padding: 45px 50px; position: relative; text-align: center; }
+    .letter::before { color: rgba(255,210,232,.36); content: '“'; font-family: Georgia, serif; font-size: 6rem; left: 22px; line-height: 1; position: absolute; top: 10px; }
+    .letter p { color: #fff4e5; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.15rem, 2vw, 1.45rem); font-style: italic; line-height: 1.65; margin: 0; position: relative; }
+    .letter small { color: #ffc2dc; display: block; letter-spacing: .12em; margin-top: 18px; text-transform: uppercase; }
+    .love-line { align-items: center; color: #ffb5d3; display: flex; font-size: 1.1rem; gap: 12px; justify-content: center; margin: 43px auto -34px; }
+    .love-line::before, .love-line::after { background: linear-gradient(90deg, transparent, #ff9fc9); content: ''; height: 1px; width: 75px; }
+    .love-line::after { transform: scaleX(-1); }
+    .chapter { align-items: stretch; display: grid; gap: 28px; grid-template-columns: .8fr 1.2fr; margin: 82px auto 0; max-width: 820px; }
+    .age-card { background: #e9a0a7; border: 1px solid rgba(255,205,228,.56); border-radius: 24px; box-shadow: 0 20px 45px rgba(66,8,41,.3); min-height: 310px; overflow: hidden; position: relative; }
+    .age-card::after { background: linear-gradient(transparent 48%, rgba(24,18,44,.9)); content: ''; inset: 0; pointer-events: none; position: absolute; }
+    .age-photo { height: 100%; inset: 0; object-fit: cover; object-position: center; position: absolute; width: 100%; }
+    .age-caption { bottom: 18px; color: #fff8e9; font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; font-style: italic; left: 20px; margin: 0; position: absolute; right: 20px; text-align: center; z-index: 1; }
+    .from-abhit { border-bottom: 1px solid rgba(255,205,228,.33); border-top: 1px solid rgba(255,205,228,.33); padding: 20px 0; }
+    .from-abhit .eyebrow { margin-bottom: 10px; }
+    .from-abhit h3 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; margin: 0 0 12px; }
+    .from-abhit h3 em { color: #ffb9d6; font-style: italic; }
+    .from-abhit p { color: #e4d9e2; font-size: .94rem; line-height: 1.75; margin: 0; }
+    .from-abhit .signed { color: #ffb9d6; font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; font-style: italic; margin-top: 15px; }
+    .long-wish { background: rgba(255,224,239,.08); border-left: 2px solid #ff9fca; border-radius: 0 20px 20px 0; margin: 70px auto 0; max-width: 760px; padding: 34px 38px; }
+    .long-wish h3 { color: #fff7fa; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.6rem, 3vw, 2.15rem); font-weight: 600; line-height: 1.15; margin: 0 0 20px; }
+    .long-wish h3 em { color: #ffb9d6; font-style: italic; }
+    .long-wish p { color: #eadbe5; font-size: .94rem; line-height: 1.82; margin: 0 0 15px; }
+    .long-wish p:last-child { margin-bottom: 0; }
+    .long-wish strong { color: #ffd0e4; }
+    .love-note { margin: 68px auto 0; max-width: 680px; padding: 12px 26px; position: relative; text-align: center; }
+    .love-note::before { color: #ff9fca; content: '♥'; font-size: 1.4rem; left: 0; position: absolute; top: 8px; }
+    .love-note::after { color: #ff9fca; content: '♥'; font-size: 1.4rem; position: absolute; right: 0; top: 8px; }
+    .love-note h3 { color: #ffcae1; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.6rem, 3vw, 2.15rem); font-style: italic; font-weight: 600; margin: 0 0 16px; }
+    .love-note p { color: #f2e3ec; font-size: .98rem; line-height: 1.85; margin: 0; }
+    .our-story { background: linear-gradient(145deg, rgba(255,197,220,.14), rgba(111,25,72,.12)); border: 1px solid rgba(255,211,232,.3); border-radius: 28px; margin: 78px auto 0; max-width: 820px; overflow: hidden; padding: 48px 54px; position: relative; }
+    .our-story::before { color: rgba(255,194,220,.16); content: '♥'; font-family: Georgia, serif; font-size: 11rem; line-height: 1; position: absolute; right: -22px; top: -28px; }
+    .our-story > p:first-child { color: #ffd2e4; font-size: .67rem; font-weight: 700; letter-spacing: .22em; margin: 0 0 10px; position: relative; text-transform: uppercase; }
+    .our-story h3 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; line-height: 1.08; margin: 0 0 27px; position: relative; }
+    .story-part { border-left: 1px solid rgba(255,193,220,.43); padding: 0 0 5px 25px; position: relative; }
+    .story-part::before { background: #ff98c4; border: 3px solid #70204e; border-radius: 50%; content: ''; height: 11px; left: -6px; position: absolute; top: 7px; width: 11px; }
+    .story-part p { color: #f1e2eb; font-size: .95rem; line-height: 1.85; margin: 0 0 21px; position: relative; }
+    .story-part p:last-child { color: #ffd1e4; font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-style: italic; margin-bottom: 0; }
+    .memory-video { background: rgba(255,232,242,.1); border: 1px solid rgba(255,211,232,.45); border-radius: 20px; margin: 31px 0 0; overflow: hidden; padding: 11px; position: relative; }
+    .memory-video video { background: #2e1023; border-radius: 13px; display: block; max-height: 560px; object-fit: contain; width: 100%; }
+    .memory-video p { color: #ffd3e5; font-family: 'Playfair Display', Georgia, serif; font-size: .98rem; font-style: italic; margin: 12px 7px 2px; text-align: center; }
+    .love-letters { margin: 72px auto 0; max-width: 850px; text-align: center; }
+    .love-letters > p { color: #ffd3e4; font-size: .67rem; font-weight: 700; letter-spacing: .22em; margin: 0 0 10px; text-transform: uppercase; }
+    .love-letters h3 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.75rem, 3.5vw, 2.45rem); font-weight: 600; margin: 0 0 28px; }
+    .letter-grid { display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); }
+    .mini-letter { background: linear-gradient(145deg, #ffb5d2, #ec6fa8); border: 1px solid rgba(255,239,247,.7); border-radius: 16px; box-shadow: 0 11px 22px rgba(67,7,41,.23); color: #6f1b48; cursor: pointer; min-height: 160px; overflow: hidden; padding: 15px 11px; position: relative; transition: transform .25s ease, box-shadow .25s ease; }
+    .mini-letter:hover { box-shadow: 0 16px 28px rgba(67,7,41,.35); transform: translateY(-6px) rotate(-1deg); }
+    .mini-letter::before { background: rgba(255,239,247,.38); clip-path: polygon(0 0, 100% 0, 50% 100%); content: ''; height: 58px; left: 0; position: absolute; right: 0; top: 0; }
+    .mini-letter .seal { align-items: center; background: #ba356e; border: 2px solid #ffe4f0; border-radius: 50%; color: #fff5fa; display: flex; font-size: 1.15rem; height: 35px; justify-content: center; margin: 13px auto 10px; position: relative; width: 35px; z-index: 1; }
+    .mini-letter b { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; position: relative; }
+    .mini-letter .letter-message { color: #6f1b48; font-size: .79rem; font-weight: 700; line-height: 1.45; margin: 10px 2px 0; opacity: 0; position: relative; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease; }
+    .mini-letter.is-open { background: linear-gradient(145deg, #ffe2ee, #ffc4dd); }
+    .mini-letter.is-open .letter-message { opacity: 1; transform: translateY(0); }
+    .mini-letter.is-open .seal { background: #f05f9c; }
+    .gallery-section { margin: 76px auto 0; max-width: 850px; }
+    .gallery-title { margin: 0 auto 24px; text-align: center; }
+    .gallery-title p { color: #ffd3e4; font-size: .67rem; font-weight: 700; letter-spacing: .22em; margin: 0 0 8px; text-transform: uppercase; }
+    .gallery-title h3 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.7rem, 3.5vw, 2.45rem); font-weight: 600; margin: 0; }
+    .gallery-title h3 em { color: #ffb9d6; font-style: italic; }
+    .photo-gallery { display: grid; gap: 15px; grid-template-columns: 1.1fr .9fr .9fr; }
+    .gallery-photo { background: #7e305a; border: 1px solid rgba(255,211,232,.38); border-radius: 18px; height: 250px; margin: 0; overflow: hidden; position: relative; }
+    .gallery-photo:nth-child(2) { transform: translateY(18px); }
+    .gallery-photo:nth-child(3) { transform: translateY(5px); }
+    .gallery-photo img { height: 100%; object-fit: cover; transition: transform .45s ease; width: 100%; }
+    .gallery-photo:hover img { transform: scale(1.06); }
+    .gallery-photo figcaption { background: linear-gradient(transparent, rgba(61,12,42,.9)); bottom: 0; color: #fff7fa; font-family: 'Playfair Display', Georgia, serif; font-size: .94rem; font-style: italic; left: 0; padding: 30px 13px 12px; position: absolute; right: 0; }
+    .career-wish { background: linear-gradient(135deg, rgba(255,184,215,.2), rgba(245,100,158,.12)); border: 1px solid rgba(255,208,229,.35); border-radius: 22px; margin: 54px auto 0; max-width: 720px; padding: 29px 34px; text-align: center; }
+    .career-wish span { color: #ffc8df; font-size: 1.35rem; }
+    .career-wish h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.45rem; margin: 9px 0; }
+    .career-wish p { color: #f2e1eb; font-size: .92rem; line-height: 1.75; margin: 0; }
+    footer { color: #bdaec6; font-size: .73rem; padding: 0 24px 35px; position: relative; text-align: center; }
+    .confetti { animation: fall linear forwards; height: 12px; position: fixed; top: -20px; width: 8px; z-index: 4; }
+    .cassette-player { background: linear-gradient(145deg, #ffc5dc, #ed74aa); border: 2px solid #fff0f7; border-radius: 12px; bottom: 18px; box-shadow: 0 12px 28px rgba(86,12,50,.35); cursor: pointer; height: 78px; padding: 0; position: fixed; right: 18px; width: 116px; z-index: 12; }
+    .cassette-player:hover { box-shadow: 0 15px 30px rgba(86,12,50,.45); transform: translateY(-3px) rotate(-2deg); }
+    .cassette-player::before { background: rgba(96,17,59,.23); border-radius: 8px; content: ''; inset: 9px 10px 24px; position: absolute; }
+    .cassette-name { bottom: 7px; color: #6a1645; font-size: .48rem; font-weight: 700; left: 4px; letter-spacing: .04em; position: absolute; right: 4px; text-transform: uppercase; }
+    .reel { background: radial-gradient(circle, #ffe6f1 0 13%, #9d356a 15% 28%, #ffe6f1 30% 37%, #9d356a 39% 52%, #ffe6f1 54%); border-radius: 50%; height: 28px; position: absolute; top: 17px; width: 28px; }
+    .cassette-player.is-playing .reel { animation: reel-spin 2.1s linear infinite; }
+    .reel.left { left: 21px; }
+    .reel.right { right: 21px; }
+    .tape-line { background: #9d356a; height: 3px; left: 46px; position: absolute; right: 46px; top: 30px; }
+    @keyframes twinkle { 50% { opacity: .08; transform: scale(.45); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fall { to { transform: translate(var(--drift), 110vh) rotate(540deg); } }
+    @keyframes bob { 50% { transform: translateY(5px); } }
+    @keyframes drift-heart { to { transform: translateY(-18px) rotate(12deg) scale(1.12); } }
+    @keyframes flicker { to { transform: rotate(39deg) scale(.88, 1.08); } }
+    @keyframes reel-spin { to { transform: rotate(360deg); } }
+    @media (max-width: 700px) { .hero { padding: 38px 14px 75px; } .card { border-radius: 23px; padding: 32px 24px 28px; } #text { font-size: .9rem; min-height: 96px; } .hidden-msg { font-size: .85rem; } .story { padding: 68px 18px 76px; } .reasons, .chapter { grid-template-columns: 1fr; } .letter { margin-top: 46px; padding: 36px 28px; } .chapter { margin-top: 58px; } .age-card { min-height: 210px; } .photo-gallery { grid-template-columns: 1fr 1fr; } .gallery-photo:first-child { grid-column: 1 / -1; height: 280px; } .gallery-photo:nth-child(2), .gallery-photo:nth-child(3) { height: 190px; transform: none; } .career-wish { padding: 27px 23px; } .letter-grid { grid-template-columns: 1fr 1fr; } .mini-letter { min-height: 145px; } .our-story { padding: 36px 26px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="love-sky" id="love-sky" aria-hidden="true"></div>
+  <section class="hero">
+  <main class="card">
+    <p class="eyebrow">ucapan kecil untuk</p>
+    <div class="photo-wrap"><img class="photo" src="foto.jpg" alt="Siti Septiyah Agustin" /><span>♥</span></div>
+    <button class="candle-toggle" id="candle-toggle" type="button" aria-pressed="false" aria-label="Matikan lilin ulang tahun">
+      <span class="flame"></span><span class="wick"></span><span class="candle"></span>
+    </button>
+    <h1>Selamat Ulang Tahun ke-22,<span>Siti Septiyah Agustin</span></h1>
+    <div class="divider"><i></i><b>♡</b><i></i></div>
+    <p id="text" aria-live="polite"></p>
+    <p class="wish">Semoga bahagia, sehat, dan penuh kejutan indah. ✨</p>
+    <button id="btn" type="button">✦ Buka Kejutan</button>
+    <div id="hidden-box" class="hidden-msg">
+      <p>Semoga semua doa baikmu menemukan jalannya satu per satu. Terima kasih sudah menjadi pribadi yang hangat dan membuat hari-hari orang di sekitarmu terasa lebih cerah.</p>
+      <p>Tetaplah melangkah dengan percaya diri, dikelilingi orang-orang yang sayang padamu, dan jangan lupa tersenyum hari ini. Ini harimu, Siti! 🎂</p>
+    </div>
+    <p class="signature">dengan banyak doa dan harapan baik untukmu</p>
+  </main>
+  <p class="scroll-note">scroll untuk melihat pesan lainnya</p>
+  </section>
+
+  <section class="story" aria-labelledby="reasons-title">
+    <div class="section-intro">
+      <p>untuk hari yang spesial</p>
+      <h2 id="reasons-title">Beberapa hal yang membuatmu <em>istimewa</em></h2>
+    </div>
+    <div class="reasons">
+      <article class="reason">
+        <div class="reason-icon">&#10022;</div>
+        <h3>Caramu bersinar</h3>
+        <p>Kamu punya cara sederhana untuk membuat suasana terasa lebih hangat dan menyenangkan.</p>
+      </article>
+      <article class="reason">
+        <div class="reason-icon">&#9825;</div>
+        <h3>Hatimu yang baik</h3>
+        <p>Perhatian kecil dan ketulusanmu selalu punya arti besar bagi orang-orang di sekitarmu.</p>
+      </article>
+      <article class="reason">
+        <div class="reason-icon">&#10032;</div>
+        <h3>Mimpimu yang besar</h3>
+        <p>Semoga setiap langkahmu membawamu semakin dekat pada semua hal indah yang kamu cita-citakan.</p>
+      </article>
+    </div>
+    <div class="letter">
+      <p>Jangan pernah ragu bahwa kamu pantas untuk dicintai, dirayakan, dan mendapatkan semua kebahagiaan yang datang dalam hidupmu.</p>
+      <small>Selamat bertambah usia, Siti</small>
+    </div>
+    <div class="love-line" aria-hidden="true">&#9825; &#9825; &#9825;</div>
+    <section class="chapter" aria-label="Pesan ulang tahun dari Abhit">
+      <div class="age-card" aria-label="Usia 22 tahun">
+        <img class="age-photo" src="tiya_abhit.png" alt="Tiya dan Abhit" />
+        <p class="age-caption">22 tahun, dan semakin banyak cerita indah bersama</p>
+      </div>
+      <div class="from-abhit">
+        <p class="eyebrow">pesan dari abhit</p>
+        <h3>Untuk Tiya di usia <em>22 tahun</em></h3>
+        <p>Semoga tahun ini membuatmu makin cantik dalam cara yang paling berarti, makin kuat, makin tenang, dan makin yakin dengan dirimu sendiri. Aku ingin terus menjadi orang yang bisa ikut merayakan tawa, menemani saat hari terasa berat, dan mendukung semua mimpimu.</p>
+        <p class="signed">Dari Abhit sayang</p>
+      </div>
+    </section>
+    <section class="gallery-section" aria-labelledby="gallery-title">
+      <div class="gallery-title">
+        <p>kenangan kecil</p>
+        <h3>Cerita kecil yang ingin selalu <em>diingat</em></h3>
+      </div>
+      <div class="photo-gallery">
+        <figure class="gallery-photo">
+          <img src="WhatsApp Image 2026-10-31 at 23.12.54.jpeg" alt="Momen spesial Tiya" />
+          <figcaption>Untuk semua senyum yang selalu berharga</figcaption>
+        </figure>
+        <figure class="gallery-photo">
+          <img src="WhatsApp Image 2026-10-31 at 23.12.54 (1).jpeg" alt="Momen spesial Tiya dan Abhit" />
+          <figcaption>Hari baik, bersama orang baik</figcaption>
+        </figure>
+        <figure class="gallery-photo">
+          <img src="WhatsApp Image 2026-10-31 at 23.12.54 (2).jpeg" alt="Kenangan manis Tiya" />
+          <figcaption>Semoga kenangan baik terus bertambah</figcaption>
+        </figure>
+      </div>
+      <div class="career-wish">
+        <span>&#10022;</span>
+        <h3>Semoga dimudahkan dalam urusan kerja</h3>
+        <p>Semoga Tiya segera mendapat kabar terbaik, diterima di pekerjaan yang diinginkan, dan dipertemukan dengan tempat kerja yang menghargai kemampuan serta kebaikanmu. Semoga setiap prosesnya lancar, diberi ketenangan saat menunggu, dan hasilnya membawa rezeki serta kebahagiaan yang luas.</p>
+      </div>
+    </section>
+    <section class="long-wish" aria-labelledby="wish-title">
+      <h3 id="wish-title">Untuk semua cerita baik di usia <em>22</em></h3>
+      <p>Tiya, semoga tahun ini menjadi halaman yang sangat indah dalam hidupmu. Semoga setiap pagi datang dengan semangat baru, setiap langkahmu dipertemukan dengan kesempatan baik, dan setiap lelahmu selalu menemukan alasan untuk tersenyum lagi. Kamu sudah tumbuh begitu jauh, dan semoga kamu selalu bangga pada dirimu sendiri.</p>
+      <p>Semoga apa pun yang sedang kamu perjuangkan—mimpi, pekerjaan, keluarga, maupun hal kecil yang hanya kamu simpan sendiri—perlahan menemukan jalannya. Tidak harus semuanya sekaligus, tidak harus selalu sempurna. Yang penting, kamu tetap berjalan dengan hati yang baik dan percaya bahwa kamu mampu melewati semuanya.</p>
+      <p>Aku juga berharap di tahun baru usiamu ini, kita bisa mengumpulkan lebih banyak kenangan sederhana: obrolan panjang, tawa yang tidak direncanakan, dukungan di hari yang sulit, dan momen kecil yang nanti akan terasa sangat berarti. <strong>Semoga aku selalu bisa menjadi bagian yang baik dalam harimu, seperti kamu yang selalu membuat banyak hal terasa lebih indah.</strong></p>
+    </section>
+    <section class="love-note" aria-label="Ucapan sayang untuk Tiya">
+      <h3>Untuk Tiya, yang selalu spesial</h3>
+      <p>Entah kenapa, hal-hal sederhana selalu terasa lebih menyenangkan kalau ada kamu. Senyummu punya cara sendiri untuk membuat hari yang biasa jadi terasa istimewa. Semoga di usia 22 ini kamu tetap menjadi Tiya yang aku kenal: manis, kuat, dan selalu punya tempat spesial di hati. Aku tidak minta banyak, cukup semoga kita terus punya waktu untuk saling menjaga, saling menguatkan, dan membuat lebih banyak kenangan baik bersama.</p>
+    </section>
+    <section class="love-letters" aria-labelledby="letters-title">
+      <p>ada empat surat kecil untukmu</p>
+      <h3 id="letters-title">Klik suratnya satu per satu</h3>
+      <div class="letter-grid">
+        <button class="mini-letter" type="button" aria-expanded="false">
+          <span class="seal">&#9825;</span><b>Surat pertama</b>
+          <span class="letter-message">Satu cium pipi manis untukmu.</span>
+        </button>
+        <button class="mini-letter" type="button" aria-expanded="false">
+          <span class="seal">&#9825;</span><b>Surat kedua</b>
+          <span class="letter-message">Satu cium kening, semoga harimu selalu tenang.</span>
+        </button>
+        <button class="mini-letter" type="button" aria-expanded="false">
+          <span class="seal">&#9825;</span><b>Surat ketiga</b>
+          <span class="letter-message">Satu cium bibir yang penuh sayang.</span>
+        </button>
+        <button class="mini-letter" type="button" aria-expanded="false">
+          <span class="seal">&#9825;</span><b>Surat terakhir</b>
+          <span class="letter-message">Dan satu peluk hangat untuk menutup hari indahmu.</span>
+        </button>
+      </div>
+    </section>
+    <section class="our-story" aria-labelledby="our-story-title">
+      <p>kisah kami berdua</p>
+      <h3 id="our-story-title">Dari Surabaya, untuk cerita yang masih berjalan</h3>
+      <div class="story-part">
+        <p>Semuanya bermula ketika kita sama-sama magang di Surabaya. Dari pertemuan yang sederhana itu, pelan-pelan ada rasa yang tumbuh. Kita punya banyak keinginan kecil untuk dilakukan bersama: nonton, jalan berdua di Jalan Tunjungan, lalu duduk di coffee shop sambil bercerita panjang lebar tentang apa saja.</p>
+        <p>Setelah hari-hari itu, kita kembali ke tempat kos masing-masing. Tiya tetap di Surabaya, sementara aku di Sidoarjo. Jaraknya tidak terlalu jauh, tetapi ternyata cukup untuk membuat setiap pertemuan terasa lebih berharga. Di antara semua momen itu, aku memberanikan diri menyatakan perasaan. Untuk pertama kalinya, jawabannya belum seperti yang aku harapkan. Saat itu aku benar-benar sedih, karena sejak pandangan pertama aku sudah menyimpan rasa sayang yang besar untukmu.</p>
+        <p>Tapi cerita kita tidak berhenti di sana. Saat aku menyatakan perasaan untuk kedua kalinya lewat WhatsApp, kamu menerimaku. Sejak saat itu, kita belajar berjalan beriringan: skripsi bersama, wisuda bersama, lalu menjalani LDR sampai sekarang. Ada hari yang mudah, ada hari yang melelahkan, ada ego yang naik turun, dan ada banyak hal yang perlu kita mengerti satu sama lain.</p>
+        <p>Namun di balik semua susah dan senang yang kita lewati, satu hal yang tidak berubah adalah perasaanku. Aku tetap sayang sama Tiya. Terima kasih sudah menjadi bagian dari cerita hidupku. I love you, sayang.</p>
+      </div>
+      <div class="memory-video">
+        <video controls preload="metadata" aria-label="Video kenangan Tiya dan Abhit">
+          <source src="WhatsApp Video 2026-11-01 at 21.27.20.mp4" type="video/mp4" />
+          Browser kamu belum mendukung pemutar video.
+        </video>
+        <p>Satu video kecil untuk mengingat perjalanan kita</p>
+      </div>
+    </section>
+  </section>
+  <footer>Dibuat khusus untuk merayakan hari spesialmu &#9825;</footer>
+  <button class="cassette-player" id="cassette-player" type="button" aria-label="Putar lagu Shape of My Heart" title="Putar atau jeda Shape of My Heart">
+    <span class="reel left"></span><span class="tape-line"></span><span class="reel right"></span>
+    <span class="cassette-name">Shape of My Heart</span>
+  </button>
+  <audio id="shape-song" preload="auto">
+    <source src="Backstreet Boys - Shape Of My Heart (Official HD Video).mp3" type="audio/mpeg" />
+  </audio>
+  <script>
+    const words = 'Hari ini adalah hari spesial untukmu. Semoga usia yang baru membawa lebih banyak tawa, cerita manis, dan semua hal baik yang kamu impikan.';
+    const text = document.getElementById('text');
+    let index = 0;
+    function type() { if (index < words.length) { text.textContent += words[index++]; setTimeout(type, 26); } }
+    const colors = ['#ffcf70', '#ff8eb7', '#a88cff', '#78e0c3', '#ffffff'];
+    function createStars() { const stars = document.getElementById('stars'); for (let i = 0; i < 38; i++) { const s = document.createElement('i'); s.className = 'star'; s.style.left = Math.random() * 100 + '%'; s.style.top = Math.random() * 100 + '%'; s.style.animationDelay = Math.random() * 2.4 + 's'; stars.appendChild(s); } }
+    function createHearts() { const sky = document.getElementById('love-sky'); for (let i = 0; i < 22; i++) { const heart = document.createElement('i'); heart.className = 'floating-heart'; heart.textContent = i % 4 === 0 ? '♡' : '♥'; heart.style.setProperty('--heart-left', Math.random() * 96 + '%'); heart.style.setProperty('--heart-top', Math.random() * 96 + '%'); heart.style.setProperty('--heart-size', 12 + Math.random() * 20 + 'px'); heart.style.setProperty('--heart-time', 2.5 + Math.random() * 3 + 's'); heart.style.animationDelay = Math.random() * 3 + 's'; sky.appendChild(heart); } }
+    const candleButton = document.getElementById('candle-toggle');
+    candleButton.addEventListener('click', () => { const isOut = candleButton.classList.toggle('is-out'); candleButton.setAttribute('aria-pressed', String(isOut)); candleButton.setAttribute('aria-label', isOut ? 'Nyalakan lilin ulang tahun' : 'Matikan lilin ulang tahun'); });
+    document.querySelectorAll('.mini-letter').forEach((letter) => { letter.addEventListener('click', () => { const isOpen = letter.classList.toggle('is-open'); letter.setAttribute('aria-expanded', String(isOpen)); }); });
+    const cassette = document.getElementById('cassette-player');
+    const shapeSong = document.getElementById('shape-song');
+    cassette.addEventListener('click', () => { if (shapeSong.paused) { shapeSong.play().then(() => { cassette.classList.add('is-playing'); cassette.setAttribute('aria-label', 'Jeda lagu Shape of My Heart'); }).catch(() => {}); } else { shapeSong.pause(); cassette.classList.remove('is-playing'); cassette.setAttribute('aria-label', 'Putar lagu Shape of My Heart'); } });
+    shapeSong.addEventListener('ended', () => { cassette.classList.remove('is-playing'); cassette.setAttribute('aria-label', 'Putar lagu Shape of My Heart'); });
+    function celebrate() { for (let i = 0; i < 55; i++) { const c = document.createElement('i'); c.className = 'confetti'; c.style.left = Math.random() * 100 + 'vw'; c.style.backgroundColor = colors[i % colors.length]; c.style.animationDuration = 2.6 + Math.random() * 1.8 + 's'; c.style.setProperty('--drift', Math.random() * 180 - 90 + 'px'); document.body.appendChild(c); setTimeout(() => c.remove(), 4700); } }
+    document.getElementById('btn').addEventListener('click', () => { celebrate(); document.getElementById('hidden-box').style.display = 'block'; document.getElementById('btn').textContent = '♥ Selamat Bertambah Usia!'; });
+    createStars(); createHearts(); type();
+  </script>
+</body>
+</html>
